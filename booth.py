@@ -119,35 +119,35 @@ def booth(m,q):
         print('q '+q)
         print('q-1 '+qn)
         if((q[-1]=="1")&(qn=="0")):
-            print('diff')
+            print('difference')
             A=diff_bin(A,m)
         elif((qn=="1")&(q[-1]=="0")):
             print('add')
             A=add_bin(A,m)
+        print("right arthimetic shift")
         A,q,qn=right_shift(A,q,qn)
         n-=1
         i+=1
-    print('Ans '+q)
+    print('Ans '+A+q)
     ans=bin_to_int(A+q)
     print("integer of ans "+str(ans))
     return str(ans)
 
+
 a=float(input())
 x=a
 ad=a-floor(a)
-if(ad>0):
+if(ad>=0):
     ae=len(str(ad))-3
 else:
     ae=len(str(ad))-4
-
 b=float(input())
 y=b
 bd=b-floor(b)
-if(bd>0):
+if(bd>=0):
     be=len(str(ad))-3
 else:
     be=len(str(ad))-4
-
 
 a=int_to_bin(int(a*10**(ae)))
 b=int_to_bin(int(b*10**(be)))
@@ -157,8 +157,14 @@ while(len(a)>len(b)):
 while(len(a)<len(b)):
     a=a[0]+a
 
-print(float(booth(a,b))/10**(ae+be))
-print(x*y)
+abc=float(booth(a,b))/10**(ae+be)
+print("ans after adding decimal:"+str(abc))
+print("x*y:"+str(x*y))
+if(0.01<abc-x*y or abc-x*y <-0.01):
+    print("code not working")
+    print("abc:"+str(abc))
+    print("x*y:"+str(x*y))
+
 
 
 
